@@ -9,7 +9,10 @@ type ThemeProp={
 export enum themePalette {
     BG="#c2e7e4",
     LIME="#C8FA5F",
-    FONT_GLOBAL= "'JetBrains Mono', monospace"
+    FONT_GLOBAL= "'JetBrains Mono', monospace",
+    //ALERT STYLES
+    ERROR_MAIN = "#f44336",
+    BG_ERROR_MAIN = "rgba(244,67,54,0.1)"
 }
 //
 const theme = createTheme({
@@ -34,8 +37,22 @@ const theme = createTheme({
                     borderRadius:"0.5em"
                 }
             }
-        }
-    }
+        },
+        MuiAlert:{
+            defaultProps:{
+                style:{
+                    borderRadius:"0.8em",
+                    fontSize:"1em",
+                },
+            },
+            styleOverrides:{
+                standardError:{
+                    border:`1px solid ${themePalette.ERROR_MAIN}`,
+                    background: themePalette.BG_ERROR_MAIN ,
+                },
+            },
+        },
+    },
 
 },
 
