@@ -1,12 +1,17 @@
 import React from "react";
 import {Box, Button, Container, Grid, Paper, Typography, TextField} from "@mui/material";
+import {useNotification} from "../../context/notification.context";
+import {LoginValidate} from "../../utils/validateForm";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 //Tipar
 type LoginType={
-    username:String;
-    password:String;
+    username:string;
+    password:string;
 }
 export const LoginPage : React.FC<{}> = () => {
+    const { getError, getSuccess }=useNotification();
     //Funcionalidad del formulario por hook
     const [loginData, setLoginData]= React.useState({
         username:"",
@@ -15,7 +20,12 @@ export const LoginPage : React.FC<{}> = () => {
 
     const handleSubmit = (e:React.FormEvent<HTMLInputElement>) => {
         e.preventDefault();
-        console.log(loginData)
+        LoginValidate.validate(loginData).then(()=>{
+            getSuccess(JSON.stringify(loginData));
+        }).catch(
+            (error)=>{
+                getError(error.message)
+            })
     }
 
     const dataLogin=(e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -40,7 +50,7 @@ export const LoginPage : React.FC<{}> = () => {
                                 fullWidth
                                 label={"Correo"}
                                 sx={{mt:2, mb:1.5}}
-                                required
+
                                 onChange={dataLogin}
                             />
                             <TextField
@@ -50,7 +60,7 @@ export const LoginPage : React.FC<{}> = () => {
                                 fullWidth
                                 label={"Contraseña"}
                                 sx={{mt:1.5, mb:1.5}}
-                                required
+
                                 onChange={dataLogin}
                             />
                             <Button
