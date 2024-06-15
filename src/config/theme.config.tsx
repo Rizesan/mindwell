@@ -4,7 +4,7 @@ import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 //provider para insertar información de manera global
 type ThemeProp={
     children: JSX.Element
-}
+};
 
 export enum themePalette {
     BG="#c2e7e4",
@@ -59,10 +59,7 @@ const theme = createTheme({
             },
         },
     },
-
-},
-
-);
+});
 export const ThemeConfig: React.FC<ThemeProp>=({children})=>{
     return (
         <ThemeProvider theme={theme}>

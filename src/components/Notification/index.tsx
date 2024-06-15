@@ -5,8 +5,8 @@ type NotificationsProps = {
     open: boolean,
     msg:string,
     severity:AlertColor | undefined,
-    handleClose: () => void
-}
+    handleClose: () => void;
+};
 
 export const Notifications :React.FC <NotificationsProps> = ({
     open,
@@ -25,4 +25,4 @@ export const Notifications :React.FC <NotificationsProps> = ({
           ><Typography>{msg}</Typography></Alert>
       </Snackbar>
   )
-}
+};

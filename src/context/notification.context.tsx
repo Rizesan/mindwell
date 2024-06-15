@@ -1,5 +1,5 @@
 import React from "react";
-import {Notifications} from "../components";
+import {Notifications} from "../components/Notification";
 import {AlertColor} from "@mui/material";
 import {Simulate} from "react-dom/test-utils";
 import error = Simulate.error;
